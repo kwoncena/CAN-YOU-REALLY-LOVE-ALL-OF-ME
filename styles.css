@@ -16,7 +16,6 @@ body {
     font-family: "Coolvetica Condensed", sans-serif; /* Default font */
 }
 
-
 /* Container for the whole page */
 .container {
     display: flex;
@@ -33,6 +32,7 @@ header {
     display: block; /* Ensure block layout */
     margin: 0 auto; /* Center the header */
 }
+
 /* General styling for all pages */
 nav {
     position: sticky;
@@ -65,7 +65,6 @@ body:not(.index-page) .logo-img {
 .index-page .container {
     padding-top: 60px; /* Add space below the larger banner */
 }
-
 
 /* Headings (H1) */
 h1 {
@@ -136,5 +135,5 @@ button.button:hover {
 
 /* Table styling */
 #track-table, #ip-table {
-    width: 100%; /*
+    width: 100%; /* Ensure full table width */
 }
