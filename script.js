@@ -306,76 +306,90 @@ document.getElementById('poem-button').addEventListener('click', async () => {
     }
 });
 
-// Function to load IP addresses from JSON files for a specific year
-async function loadIPAddresses(year) {
-    ipAddresses = []; // Clear array to load new IP addresses
+// Function to load all IP addresses for a specific year from the JSON files
+async function loadIpAddressesForYear(year) {
     try {
+        ipAddresses = []; // Clear the array before loading
         for (const file of jsonFiles) {
             const response = await fetch(file);
             const data = await response.json();
 
+            // Extract 'ip_addr_decrypted' from each entry, filter by year using 'ts'
             data.forEach(item => {
-                // Check if the timestamp matches the specified year
-                const timestamp = new Date(item.ts); // Convert timestamp to Date object
-                if (timestamp.getFullYear() === year && item.ip_addr_decrypted) {
-                    ipAddresses.push(item.ip_addr_decrypted); // Allow duplicates by using array
+                const timestamp = new Date(item.ts); // Convert 'ts' to Date object
+                const itemYear = timestamp.getFullYear(); // Extract the year from 'ts'
+                
+                if (itemYear === year && item.ip_addr_decrypted) {
+                    ipAddresses.push(item.ip_addr_decrypted);
                 }
             });
         }
+        console.log(`IP addresses for ${year} loaded:`, ipAddresses); // Debugging output
     } catch (error) {
-        console.error(`Error loading IP addresses for ${year}:`, error);
+        console.error('Error loading IP addresses:', error);
     }
 }
 
-// Function to shuffle and display a random IP address with Matrix-style animation
-function shuffleIP() {
+// Function to shuffle and pick a random IP address
+function shuffleIp() {
+    if (ipAddresses.length === 0) {
+        alert('No IP addresses available for the selected year.');
+        return;
+    }
+    const randomIndex = Math.floor(Math.random() * ipAddresses.length);
+    const randomIp = ipAddresses[randomIndex];
+    displayShuffledIp(randomIp); // Display the shuffled IP in the table
+    fetchIpDetails(randomIp); // Fetch details for the shuffled IP from API
+}
+
+// Function to display the shuffled IP in the table
+function displayShuffledIp(ipAddress) {
     const ipList = document.getElementById('ip-list');
-    ipList.innerHTML = ''; // Clear the current table contents
+    ipList.innerHTML = ''; // Clear any previous IPs
 
-    if (ipAddresses.length > 0) {
-        // Randomly select an IP address
-        const randomIP = ipAddresses[Math.floor(Math.random() * ipAddresses.length)];
-
-        // Create a row with matrix animation
-        const row = document.createElement('tr');
-        row.classList.add('matrix-animation'); // Add matrix-style animation class
-        row.innerHTML = `<td>${randomIP}</td>`;
-        ipList.appendChild(row);
-
-        // Remove the row after the animation ends (match the animation duration)
-        setTimeout(() => {
-            row.remove();
-        }, 5000); // Animation duration: 5 seconds
-    } else {
-        console.log('No IP addresses available for shuffling.');
-    }
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>${ipAddress}</td>`;
+    ipList.appendChild(row);
 }
 
-// Function to search the entered IP address on ipinfo.io
-function searchIPOnWeb() {
-    const searchInput = document.getElementById('search-ip').value.trim();
+// Function to fetch IP details using IPGeolocation.io API
+async function fetchIpDetails(ipAddress) {
+    const apiKey = '88ec24d1deb04657a98f698c306a84f9';  // Replace with your actual API key
+    const apiUrl = `https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${ipAddress}`;
     
-    if (searchInput) {
-        // Redirect the user to ipinfo.io with the entered IP address
-        const url = `https://ipinfo.io/${searchInput}`;
-        window.open(url, '_blank'); // Open the IP search result in a new tab
-    } else {
-        alert('Please enter an IP address to search.');
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error(`Error fetching IP details: ${response.status}`);
+        }
+        const data = await response.json();
+        displayIpDetails(data); // Display the fetched IP details
+    } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('ip-details').innerHTML = `<p>Error fetching IP details. Please try again.</p>`;
     }
 }
 
-// Add event listener for the shuffle button click
-document.getElementById('shuffle-button').addEventListener('click', shuffleIP);
+// Function to display IP details in the "ip-details" div
+function displayIpDetails(data) {
+    const ipDetailsDiv = document.getElementById('ip-details');
+    ipDetailsDiv.innerHTML = `
+        <p><strong>IP Address:</strong> ${data.ip}</p>
+        <p><strong>City:</strong> ${data.city}</p>
+        <p><strong>Region:</strong> ${data.state_prov}</p>
+        <p><strong>Country:</strong> ${data.country_name}</p>
+        <p><strong>Latitude, Longitude:</strong> ${data.latitude}, ${data.longitude}</p>
+        <p><strong>ISP:</strong> ${data.isp}</p>
+        <p><strong>Organization:</strong> ${data.organization}</p>
+        <p><strong>Time Zone:</strong> ${data.time_zone.name} (GMT ${data.time_zone.offset})</p>
+    `;
+}
 
-// Add event listener for the search IP button click
-document.getElementById('search-ip-button').addEventListener('click', searchIPOnWeb);
+// Event listener for shuffle button
+document.getElementById('shuffle-button').addEventListener('click', shuffleIp);
 
-// Example usage: Load IP addresses for a specific year when the page loads
-document.addEventListener('DOMContentLoaded', function () {
-    loadIPAddresses(2014);// Replace 2014 with the year you want to load
-});
-
-// Open ipinfo.io in a new tab
-document.getElementById('open-ipinfo').addEventListener('click', function() {
-    window.open('https://ipinfo.io/', '_blank');
+// Load IP addresses on page load for a specific year (e.g., 2018)
+window.addEventListener('load', function() {
+    const selectedYear = 2018; // You can dynamically change this year as needed
+    loadIpAddressesForYear(selectedYear);
 });

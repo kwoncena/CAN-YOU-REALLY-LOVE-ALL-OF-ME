@@ -46,13 +46,12 @@
 
             <!-- Second Column (IP Address Table) -->
             <div class="column">
-                <button id="shuffle-button" class="button">Where do you want to go?</button> <!-- Shuffle button -->
+                <button id="shuffle-button" class="button">Where was I?</button> <!-- Shuffle button -->
                 <div class="scrollable-content" style="overflow-y: scroll; height: 200px; border: 1px solid #ccc;">
                     <table id="ip-table">
                         <thead>
                             <tr>
-                                <th>IP Address</th>
-                                <th>Ctrl+C</th>
+                                
                             </tr>
                         </thead>
                         <tbody id="ip-list">
@@ -60,9 +59,15 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- Button to open ipinfo.io in a new tab -->
-                <button id="open-ipinfo" class="button" style="margin-top: 10px;">Open IP Info Website</button>
+
+                <!-- IP details from IPGeolocation.io API will be shown here -->
+                <div id="ip-details" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px;">
+                    <!-- Fetched IP details will be dynamically inserted here -->
+                </div>
             </div>
+
+
+
 
             <!-- Third Column -->
             <div class="column">

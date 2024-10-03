@@ -1,3 +1,4 @@
+/* Import the fonts */
 @font-face {
     font-family: "Coolvetica Condensed";
     src: url("./fonts/coolvetic_condensed_rg.otf");
@@ -10,270 +11,109 @@
 
 /* Overall body styling */
 body {
-    background-color: #1E1E1E; /* Your background color */
-    color: #FAF9F6; /* Default text color */
-    font-family: "Coolvetica Condensed", sans-serif; /* Use Coolvetica for body */
+    background-color: #1E1E1E; /* Dark background */
+    color: #FAF9F6; /* Light text color */
+    font-family: "Coolvetica Condensed", sans-serif; /* Default font */
 }
 
-/* Container for the main content */
-#container {
-    width: 90%; /* Set width for the container */
-    margin: auto; /* Center the container */
+/* Container for the whole page */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full screen height */
+    text-align: center;
 }
 
 /* Header styles */
 header {
-    
-    margin-bottom: 20px; /* Spacing between header and buttons */
-    display: block; /* Make sure it's a block element */
-    margin: 0 auto; /* Center it */
+    margin-bottom: 20px; /* Space below the header */
+    display: block; /* Ensure block layout */
+    margin: 0 auto; /* Center the header */
 }
 
-h1 {
-    font-family: "Coolvetica"; /* Use Coolvetica for h1 */
-    display: block; /* Make sure it's a block element */
-    margin: 0 auto; /* Center it */
-}
-
-/* Controls for buttons */
-#controls {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px; /* Spacing between buttons and table */
-}
-
-/* Logo styling */
+/* Header logo styles */
 .logo {
     color: white; /* Logo text color */
-    font-size: 24px; /* Logo text size */
-    text-decoration: none; /* Remove underline from link */
+    font-size: 24px; /* Logo font size */
+    text-decoration: none; /* No underline */
     margin-bottom: 20px; /* Space below the logo */
 }
 
-.logo img {
-    max-width: 100%; /* Make the logo responsive */
+header .logo-img {
+    max-width: 100px; /* Logo size */
     height: auto; /* Maintain aspect ratio */
 }
 
-/* Columns layout */
+/* Headings (H1) */
+h1 {
+    font-family: "Coolvetica"; /* Heading font */
+    font-size: 32px; /* Heading size */
+    margin: 20px 0; /* Margin around headings */
+    color: #FAF9F6;
+}
+
+/* Flexbox layout for columns */
 .columns {
     display: flex;
-    justify-content: space-between; /* Space columns evenly */
+    justify-content: space-between; /* Distribute columns */
+    gap: 20px; /* Space between columns */
+    width: 100%; /* Full width */
+    max-width: 1200px; /* Limit max width */
 }
 
+/* Style for each individual column */
 .column {
-    flex: 1; /* Each column takes equal space */
-    margin: 0 10px; /* Margin between columns */
+    background: linear-gradient(to bottom, 
+    #2d2d2d, 
+    #424242, 
+    #575757, 
+    #6C6C6C, 
+    #818181, 
+    #969696);
+    color: #f9f9f9; /* Dark text inside columns */
+    padding: 20px;
+    flex: 1; /* Equal space for columns */
+    border: 1px solid #1E1E1E;
+    border-radius: 5px;
+    text-align: left;
 }
 
-.first-column {
-    height: 400px; /* Set a fixed height for the first column */
-    background-color: #f9f9f9; /* Optional background color */
-}
-
-/* Scrollable content area */
-.scrollable-content {
-    height: calc(100% - 40px); /* Adjust this based on your content height */
-    overflow-y: auto; /* Enable vertical scrolling */
-    margin-top: 10px; /* Optional spacing */
-}
-
-/* Table styling */
-#track-table {
-    width: 100%; /* Full width of the column */
-    border-collapse: collapse; /* Collapse borders */
-}
-
-/* Cell styling */
-th, td {
-    padding: 10px; /* Add padding for table cells */
-    border: 1px solid #ccc; /* Add borders to cells */
-}
-
-/* Header cell styling */
-th {
-    background-color: #4CAF50; /* Header background color */
-    color: white; /* Header text color */
-}
-
-/* Fixed width for checkbox column */
-th:first-child, td:first-child {
-    width: 50px; /* Fixed width for the checkbox column */
-}
-
-/* Remaining width for track names */
-th:nth-child(2), td:nth-child(2) {
-    width: calc(100% - 50px); /* Remaining width for track names */
-}
-
-/* Table body for scrolling */
-tbody {
-    display: block; /* Make tbody block to allow for scrolling */
-    max-height: 300px; /* Set a max height for the table body */
-    overflow-y: scroll; /* Enable vertical scrolling */
-    overflow-x: hidden; /* Disable horizontal scrolling */
-}
-
-/* Row display settings */
-tr {
-    display: table; /* Make rows act like table rows */
-    table-layout: fixed; /* Fix column widths */
-}
-
-/* Gallery styling */
-.gallery {
-    display: flex;
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
-    overflow-y: auto; /* Enable vertical scrolling if needed */
-    max-height: 300px; /* Set max height for the gallery */
-}
-
-.gallery-item {
-    margin: 5px;
-    max-width: 100%; /* Responsive images/videos */
-    height: auto;
-}
-
-/* Button container */
+/* Centering button container */
 .button-container {
-    display: flex; /* Use Flexbox */
-    flex-direction: column; /* Stack logo and buttons vertically */
-    flex-wrap: nowrap;
-    justify-content: center; /* Center items horizontally */
-    align-items: center; /* Center items vertically */
-    height: 100vh; /* Full viewport height to center vertically */
-    margin: 0 auto; /* Center the container */
-}
-
-/* Styling for buttons inside the button container */
-.buttons-container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    flex-wrap: wrap; /* Allow wrapping if needed */
+    height: 100vh;
 }
 
-.buttons-container button {
-    margin: 5px; /* Add some space between buttons */
-}
-
-/* Button styling */
-.button {
-    background-color: #6CB4EE; /* Button background color */
-    border: none; /* Remove border */
-    font-family: "Coolvetica Condensed", sans-serif; /* Use Coolvetica for buttons */
-    color: #FAF9F6; /* Button text color */
-    padding: 20px; /* Button padding */
-    text-align: center; /* Center text */
-    text-decoration: none; /* Remove underline from link */
-    display: inline-block; /* Allow for margins */
-    font-size: 16px; /* Button text size */
-    margin: 10px 5px; /* Adjust space between buttons */
-    border-radius: 4px; /* Border radius for buttons */
-}
-
-.button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-}
-
-/* Button styles for individual buttons */
-.button1, .button2, .button3, .button4, .button5, .button6, .button7, .button8, .button9, .button10, .button11 {
-    display: inline-block; /* Ensure buttons are inline */
-}
-
-/* Disabled button styling */
-.button-disabled {
-    pointer-events: none; /* Disable pointer events */
-    opacity: 0.5; /* Make the button look disabled */
-}
-
-
-/* Media queries for responsiveness */
-@media (max-width: 768px) {
-    .button {
-        font-size: 4vw; /* Increase font size on smaller screens */
-        width: 80%; /* Increase button width on smaller screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .button {
-        font-size: 5vw; /* Further increase font size on mobile */
-        padding: 15px; /* Adjust padding for mobile */
-    }
-}
-
-/* Style for the button */
-.poem-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+/* General button styling */
+button.button {
+    background-color: #6CB4EE; /* Light blue background */
+    color: #FAF9F6; /* Light text color */
     padding: 10px 20px;
-    background-color: #ff5733; /* Change this color if needed */
-    color: white;
     border: none;
     border-radius: 5px;
     font-size: 16px;
-    cursor: pointer;
-    z-index: 1000; /* Make sure it's above other elements */
+    margin-bottom: 20px;
 }
 
-.poem-button:hover {
-    background-color: #ff3300; /* Change the hover color */
+button.button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
 }
 
-/* Style for the sonnet container */
-#poem-container {
-    margin: 20px;
-    font-family: Arial, sans-serif;
-    font-size: 18px;
-    line-height: 1.5;
-    color: white;
-}
-
-/* Checkbox styling (optional) */
-.track-checkbox {
-    /* Style for the checkboxes if needed */
-    width: 20px; /* Size of the checkbox */
-    height: 20px; /* Size of the checkbox */
-    cursor: pointer; /* Cursor style when hovering */
-    accent-color: #4CAF50; /* Change the checkbox color if supported */
-}
-
-#generate-sonnet {
-    display: block; /* Make sure it's a block element */
-    margin: 0 auto; /* Center it */
-}
-
-/* Add a new class for matrix-like animation */
-.matrix-animation {
-    position: relative;
-    animation: fall 5s linear infinite;
-    color: blue;
-}
-
-/* Keyframes for the falling effect */
-@keyframes fall {
-    0% {
-        top: -100%;  /* Start from above the visible area */
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        top: 100%;   /* Move below the visible area */
-        opacity: 0;
-    }
-}
-
-/* Scrollable content */
+/* Scrollable content styling */
 .scrollable-content {
-    overflow-y: hidden; /* Hide the overflow as we don't want a scrollbar */
-    height: 200px; /* Adjust this height as needed */
+    max-height: 200px;
+    overflow-y: auto;
     border: 1px solid #ccc;
-    position: relative;
-    background-color: black; /* Optional: Background like Matrix */
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* Table styling */
+#track-table, #ip-table {
+    width: 100%; /*
 }

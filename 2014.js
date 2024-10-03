@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     loadIPAddresses(2014); // Replace 2014 with the year you want to load
 });
 
-// Open ipinfo.io in a new tab
-document.getElementById('open-ipinfo').addEventListener('click', function() {
-    window.open('https://ipinfo.io/', '_blank');
+window.addEventListener('load', function() {
+    const selectedYear = 2014; // You can dynamically change this year as needed
+    loadIpAddressesForYear(selectedYear);
 });

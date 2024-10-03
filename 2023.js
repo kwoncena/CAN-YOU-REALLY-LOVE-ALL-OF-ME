@@ -19,7 +19,7 @@ document.getElementById('poem-button').addEventListener('click', async () => {
 document.addEventListener('DOMContentLoaded', function () {
     loadIPAddresses(2023); // Replace 2014 with the year you want to load
 });
-// Open ipinfo.io in a new tab
-document.getElementById('open-ipinfo').addEventListener('click', function() {
-    window.open('https://ipinfo.io/', '_blank');
+window.addEventListener('load', function() {
+    const selectedYear = 2023; // You can dynamically change this year as needed
+    loadIpAddressesForYear(selectedYear);
 });
