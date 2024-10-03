@@ -16,6 +16,7 @@ body {
     font-family: "Coolvetica Condensed", sans-serif; /* Default font */
 }
 
+
 /* Container for the whole page */
 .container {
     display: flex;
@@ -32,19 +33,39 @@ header {
     display: block; /* Ensure block layout */
     margin: 0 auto; /* Center the header */
 }
-
-/* Header logo styles */
-.logo {
-    color: white; /* Logo text color */
-    font-size: 24px; /* Logo font size */
-    text-decoration: none; /* No underline */
-    margin-bottom: 20px; /* Space below the logo */
+/* General styling for all pages */
+nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    z-index: 1000;
 }
 
-header .logo-img {
-    max-width: 100px; /* Logo size */
-    height: auto; /* Maintain aspect ratio */
+.logo-img {
+    object-fit: contain;
+    cursor: pointer;
+    max-width: 100%;
 }
+
+/* Large banner logo on index.html */
+.index-page .logo-img {
+    height: 450px; /* Make the logo larger like a banner */
+}
+
+/* Smaller logo for other pages */
+body:not(.index-page) .logo-img {
+    height: 200px; /* Smaller logo on non-index pages */
+}
+
+/* Optional: Adjust the spacing for the container */
+.index-page .container {
+    padding-top: 60px; /* Add space below the larger banner */
+}
+
 
 /* Headings (H1) */
 h1 {

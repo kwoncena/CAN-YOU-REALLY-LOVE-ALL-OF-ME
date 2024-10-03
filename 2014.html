@@ -3,77 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Can You Really Love All Of Me? - Cara Kwon</title>
+    <title>Trackify - Cara Kwon</title>
    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <header>
+        <nav>
             <div class="logo" onclick="location.href='index.html'">
-                <img src="canurealluhme.png" alt="Logo" class="logo-img"> 
+                <img src="trackify.png" alt="Logo" class="logo-img">
             </div>
-        </header>
+        </nav>
+    
+        <div class="container">
+            
+            <button id="generate-names" class="button">Your Name</button>
+    
         
-        <button id="generate-names" class="button">Your Name</button>
-        <p>This was me in...</p>
 
-        <h1>2014</h1>
-        <div class="columns">
-            <!-- First Column -->
-            <div class="column">
-                <button id="play-button" class="button">Play</button>
-                <label>
-                    <input type="checkbox" id="select-all" /> Select All
-                </label>
-                <div class="scrollable-content">
-                    <table id="track-table">
-                        <thead>
-                            <tr>
-                                <th>Select</th>
-                                <th>Track Name</th>
-                                <th>Spotify URI</th>
-                            </tr>
-                        </thead>
-                        <tbody id="track-list">
-                            <!-- Tracks will be dynamically populated here -->
-                        </tbody>
-                    </table>
-                </div>
-                <!-- Container to display selected track iframes -->
-                <div id="iframe-container"></div>
-            </div>
-
-            <!-- Second Column (IP Address Table) -->
-            <div class="column">
-                <button id="shuffle-button" class="button">Where was I?</button> <!-- Shuffle button -->
-                <div class="scrollable-content" style="overflow-y: scroll; height: 200px; border: 1px solid #ccc;">
-                    <table id="ip-table">
-                        <thead>
-                            <tr>
-                                
-                            </tr>
-                        </thead>
-                        <tbody id="ip-list">
-                            <!-- Random IP address will be dynamically populated here -->
-                        </tbody>
-                    </table>
+            <h1>2014</h1>
+            <div class="columns">
+                <!-- First Column -->
+                <div class="column">
+                    <button id="play-button" class="button">Play</button>
+                    <label>
+                        <input type="checkbox" id="select-all" /> Select All
+                    </label>
+                    <div class="scrollable-content">
+                        <table id="track-table">
+                            <thead>
+                                <tr>
+                                    <th>Select</th>
+                                    <th>Track Name</th>
+                                    <th>Spotify URI</th>
+                                </tr>
+                            </thead>
+                            <tbody id="track-list">
+                                <!-- Tracks will be dynamically populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Container to display selected track iframes -->
+                    <div id="iframe-container"></div>
                 </div>
 
-                <!-- IP details from IPGeolocation.io API will be shown here -->
-                <div id="ip-details" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px;">
-                    <!-- Fetched IP details will be dynamically inserted here -->
+                <!-- Second Column (IP Address Table) -->
+                <div class="column">
+                    <button id="shuffle-button" class="button">Where was I?</button> <!-- Shuffle button -->
+                    <div class="scrollable-content" style="overflow-y: scroll; height: 200px; border: 1px solid #ccc;">
+                        <table id="ip-table">
+                            <thead>
+                                <tr>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody id="ip-list">
+                                <!-- Random IP address will be dynamically populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- IP details from IPGeolocation.io API will be shown here -->
+                    <div id="ip-details" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px;">
+                        <!-- Fetched IP details will be dynamically inserted here -->
+                    </div>
                 </div>
-            </div>
 
 
 
 
-            <!-- Third Column -->
-            <div class="column">
-                <button id="poem-button" class="button">A Poem From Me To You</button>
-                <div id="poem-output"></div>
-            </div>
+                <!-- Third Column -->
+                <div class="column">
+                    <button id="poem-button" class="button">Sonnet-ify</button>
+                    <div id="poem-output"></div>
+                </div>
     </div>
 
 

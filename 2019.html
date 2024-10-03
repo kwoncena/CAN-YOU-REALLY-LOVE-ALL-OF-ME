@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Can You Really Love All Of Me? - Cara Kwon</title>
+    <title>Trackify - Cara Kwon</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <header>
+        <nav>
             <div class="logo" onclick="location.href='index.html'">
-                <img src="canurealluhme.png" alt="Logo" class="logo-img"> 
+                <img src="trackify.png" alt="Logo" class="logo-img">
             </div>
-        </header>
+        </nav>
         
         <button id="generate-names" class="button">Your Name</button>
-        <p>This was me in...</p>
+        
 
         <h1>2019</h1>
         <div class="columns">
@@ -44,28 +44,33 @@
             </div>
 
             <!-- Second Column (IP Address Table) -->
-           <div class="column">
-            <button id="shuffle-button" class="button">Where do you want to go?</button> <!-- Shuffle button -->
-            <div class="scrollable-content" style="overflow-y: scroll; height: 200px; border: 1px solid #ccc;">
-                <table id="ip-table">
-                    <thead>
-                        <tr>
-                            <th>IP Address</th>
-                            <th>Ctrl+C</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ip-list">
-                        <!-- Random IP address will be dynamically populated here -->
-                    </tbody>
-                </table>
+            <div class="column">
+                <button id="shuffle-button" class="button">Where was I?</button> <!-- Shuffle button -->
+                <div class="scrollable-content" style="overflow-y: scroll; height: 200px; border: 1px solid #ccc;">
+                    <table id="ip-table">
+                        <thead>
+                            <tr>
+                                
+                            </tr>
+                        </thead>
+                        <tbody id="ip-list">
+                            <!-- Random IP address will be dynamically populated here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- IP details from IPGeolocation.io API will be shown here -->
+                <div id="ip-details" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px;">
+                    <!-- Fetched IP details will be dynamically inserted here -->
+                </div>
             </div>
-            <!-- Button to open ipinfo.io in a new tab -->
-            <button id="open-ipinfo" class="button" style="margin-top: 10px;">Open IP Info Website</button>
-            </div>
+
+
+
 
             <!-- Third Column -->
             <div class="column">
-                <button id="poem-button" class="button">A Poem From Me To You</button>
+                <button id="poem-button" class="button">Sonnet-ify</button>
                 <div id="poem-output"></div>
             </div>
     </div>
