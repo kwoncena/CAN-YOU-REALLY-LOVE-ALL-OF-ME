@@ -393,3 +393,4 @@ window.addEventListener('load', function() {
     const selectedYear = 2018; // You can dynamically change this year as needed
     loadIpAddressesForYear(selectedYear);
 });
+

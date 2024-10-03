@@ -101,7 +101,7 @@ h1 {
 }
 
 /* Centering button container */
-.button-container {
+.buttons-container {
     display: flex;
     flex-direction: column;
     align-items: center;
